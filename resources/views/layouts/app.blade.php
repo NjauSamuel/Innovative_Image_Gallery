@@ -122,6 +122,8 @@
         </main>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+
     <script>
         window.addEventListener('load', () => {
             // Delay hiding the loader by 300ms to allow rendering
@@ -131,7 +133,6 @@
             }, 300); // You can increase this if needed
         });
     </script>
-
 
 </body>
 </html>

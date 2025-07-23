@@ -1,8 +1,1 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* Optional theme overrides, use only if you're customizing */
-@import 'flowbite';
-
-/* ❌ Do NOT use @plugin or @source inside CSS — Tailwind handles that via config */
+@import "tailwindcss" prefix(tw);

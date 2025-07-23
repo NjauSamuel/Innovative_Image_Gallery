@@ -1,6 +1,5 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  prefix: 'tw-', // 👈 Adds tw- prefix to all Tailwind classes
   content: [
     './resources/**/*.blade.php',
     './resources/**/*.js',
