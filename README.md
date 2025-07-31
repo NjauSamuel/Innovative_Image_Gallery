@@ -72,6 +72,7 @@ To create an admin user for the Filament panel via the terminal, run:
 
 ```bash
 php artisan make:filament-user
+```
 
 ## Contributing
 
