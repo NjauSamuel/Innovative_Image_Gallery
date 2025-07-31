@@ -63,8 +63,15 @@ This project highlights the seamless integration and power of the following tech
 
 ## Usage
 
-* Navigate to `http://127.0.0.1:8000` (or your chosen port) in your browser to view the gallery.
-* Access the Filament admin panel at `http://127.0.0.1:8000/admin`. You'll need to create a user to log in to the admin panel.
+- Navigate to `http://127.0.0.1:8000` (or your chosen port) in your browser to view the gallery.
+- Access the Filament admin panel at `http://127.0.0.1:8000/admin`. You'll need to create a user to log in to the admin panel.
+
+### Creating a Filament Admin User
+
+To create an admin user for the Filament panel via the terminal, run:
+
+```bash
+php artisan make:filament-user
 
 ## Contributing
 
