@@ -23,3 +23,13 @@
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
+
+.swiper-button-next::after,
+.swiper-button-prev::after,
+.swiper-pagination::after {
+    @apply text-primary-400;
+}
+
+.swiper-pagination-bullet-active {
+    @apply bg-primary-400;
+}

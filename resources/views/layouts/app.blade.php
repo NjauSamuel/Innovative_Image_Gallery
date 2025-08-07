@@ -18,6 +18,8 @@
     <!-- Apple -->
     <link rel="apple-touch-icon" href="{{ asset('favicon/apple-touch-icon.png') }}">
 
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
     <style>
         .loader {
@@ -340,12 +342,32 @@
             
         });
     </script>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            initAccordions();
-            initCarousels();
-            initCopyClipboards();
+        document.addEventListener('DOMContentLoaded', function () {
+            const swiper = new Swiper('.swiper', {
+                slidesPerView: 1, // Lowered from a higher value
+                slidesPerGroup: 1, // Lowered from a higher value
+                loop: true,
+                autoplay: {
+                    delay: 3000, // 3 seconds
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+            });
+
+            // Press the "Next" button once after 3 seconds
+            setTimeout(() => {
+                document.querySelector('.swiper-button-next')?.click();
+            }, 3000);
         });
     </script>
 
