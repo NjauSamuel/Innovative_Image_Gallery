@@ -8,7 +8,9 @@
             <div class="flex justify-center items-center py-6 px-4 lg:py-0 sm:px-0 relative">
                 
                 
-                <form class="space-y-4 max-w-md md:space-y-6 xl:max-w-xl pt-4" action="#">
+                <form class="space-y-4 max-w-md md:space-y-6 xl:max-w-xl pt-4" action="{{ route('register') }}" method="POST">
+                    @csrf
+
                     <h2 class="text-xl font-bold text-gray-900 dark:text-white">Your Best Work Starts Here</h2>
                     
                     <button id="theme-toggle" type="button" class="absolute top-2 right-3 text-gray-500 dark:text-gray-400 hover:bg-gray-100 bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
@@ -35,22 +37,65 @@
                         <div class="px-5 text-center text-gray-500 dark:text-gray-400">or</div>
                         <div class="w-full h-0.5 bg-gray-200 dark:bg-gray-700"></div>
                     </div>
+                    <!-- Name -->
                     <div>
-                        <label for="full-name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">What should we call you?</label>
-                        <input type="text" name="full-name" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" placeholder="e.g. Bonnie Green" required="">
+                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                            What should we call you?
+                        </label>
+                        <input
+                            type="text"
+                            name="name"
+                            id="name"
+                            value="{{ old('name') }}"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+                                focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5
+                                dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white
+                                @error('name') border-red-500 @enderror"
+                            placeholder="e.g. Bonnie Green"
+                            required
+                        >
+                        @error('name')
+                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
                     </div>
+
+                    <!-- Email -->
                     <div>
-                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your email</label>
-                            <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" placeholder="name@company.com" required="">
-                        </div>
+                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                            Your email
+                        </label>
+                        <input
+                            type="email"
+                            name="email"
+                            id="email"
+                            value="{{ old('email') }}"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+                                focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5
+                                dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white
+                                @error('email') border-red-500 @enderror"
+                            placeholder="name@company.com"
+                            required
+                        >
+                        @error('email')
+                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!-- Password -->
                     <div>
-                        <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your password</label>
-                            <input type="password" name="password" id="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" required="">
-                        </div>
-                        <div>
-                            <label for="password_confirmation" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Confirm password</label>
-                            <input type="password" name="password_confirmation" id="password_confirmation" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" required>
-                        </div>
+                        <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                            Your password </label>
+                        <input type="password" name="password" id="password" class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white @error('password') border-red-500 @enderror focus:ring-primary-500 focus:border-primary-500 " placeholder="••••••••" required >
+                        @error('password')
+                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!-- Confirm Password -->
+                    <div>
+                        <label for="password_confirmation" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"> Confirm password</label>
+                        <input type="password" name="password_confirmation" id="password_confirmation" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" placeholder="••••••••" required>
+                    </div>
 
                     <div class="space-y-3">
                         <div class="flex items-start">
@@ -64,7 +109,7 @@
                     </div>
                     <button type="submit" class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-700">Create an account</button>
                     <p class="text-sm font-light text-gray-500 dark:text-gray-300">
-                        Already have an account? <a href="#" class="font-medium text-primary-600 hover:underline dark:text-primary-500">Login here</a>
+                        Already have an account? <a href="{{ route('login') }}" class="font-medium text-primary-600 hover:underline dark:text-primary-500">Login here</a>
                     </p>
                 </form>
             </div>  
@@ -87,7 +132,7 @@
                         <img class="w-10 h-10 border-2 border-white rounded-full" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/roberta-casas.png" alt="roberta avatar">
                         <img class="w-10 h-10 border-2 border-white rounded-full" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/thomas-lean.png" alt="thomas avatar">
                         </div>
-                        <a href="#" class="pl-3 text-white sm:pl-5 dark:text-white">
+                        <a href="/" class="pl-3 text-white sm:pl-5 dark:text-white">
                             <span class="text-sm text-primary-200">Galleries shared. Stories told.</span>
                         </a> 
                     </div>
