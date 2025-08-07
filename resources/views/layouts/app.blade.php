@@ -341,5 +341,14 @@
         });
     </script>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            initAccordions();
+            initCarousels();
+            initCopyClipboards();
+        });
+    </script>
+
+
 </body>
 </html>
