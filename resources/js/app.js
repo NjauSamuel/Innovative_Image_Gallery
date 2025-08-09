@@ -14,6 +14,10 @@ import TextStyle from 'https://esm.sh/@tiptap/extension-text-style@2.6.6';
 import FontFamily from 'https://esm.sh/@tiptap/extension-font-family@2.6.6';
 import { Color } from 'https://esm.sh/@tiptap/extension-color@2.6.6';
 import Bold from 'https://esm.sh/@tiptap/extension-bold@2.6.6'; // Import the Bold extension
+import Swal from 'sweetalert2';
+
+// Expose globally so you can call it in Blade inline scripts
+window.Swal = Swal;
 
 
 window.addEventListener('load', function () {
