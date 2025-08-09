@@ -19,6 +19,18 @@ import Swal from 'sweetalert2';
 // Expose globally so you can call it in Blade inline scripts
 window.Swal = Swal;
 
+// Closing the toast messages in 10 seconds. 
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.auto-close-toast').forEach(toast => {
+        setTimeout(() => {
+            toast.classList.add('opacity-0', 'transition-opacity', 'duration-500');
+            setTimeout(() => toast.remove(), 500);
+        }, 10000); // 10 seconds
+    });
+});
+
+
 
 window.addEventListener('load', function () {
     if (document.getElementById("wysiwyg-example")) {

@@ -22,12 +22,13 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/'); // or any intended page
+
+            FlashSuccess('Welcome back! You are now logged in.');
+            return redirect()->intended('/');
         }
 
-        return back()->withErrors([
-            'email' => 'Invalid credentials.',
-        ]);
+        FlashError('Invalid credentials.');
+        return back();
     }
 
     public function logout(Request $request)
