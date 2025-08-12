@@ -32,4 +32,5 @@
 
 .swiper-pagination-bullet-active {
     @apply bg-primary-400;
+    background-color: theme('colors.primary.400') !important;
 }

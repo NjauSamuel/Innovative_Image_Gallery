@@ -85,3 +85,11 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 ---
 
 Author: [Samuel Njau](https://samuel.eucossa.com)
+
+-- Notes. 
+
+- I utlized the Laravel Avatar for dynamic user profile pictures. 
+
+- I've had a whole table for the Icons utilized within my project to be font awesome's. 
+
+- I have like 40+ categories of Galleries. php artisan db:seed --class=IconAndCategorySeeder

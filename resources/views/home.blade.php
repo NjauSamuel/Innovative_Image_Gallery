@@ -10,13 +10,11 @@
             <div class="lg:max-w-xl xl:shrink-0">
             <div>
                 <h2 class="text-3xl font-extrabold leading-none tracking-tight text-gray-900 dark:text-white sm:text-5xl">
-                Making earth cooler for
-                people, nature, climate
+                    Share your world, one gallery at a time
                 </h2>
                 <p class="mt-5 text-base font-normal text-gray-500 dark:text-gray-400 md:max-w-3xl sm:text-xl">
-                Protecting the planet and its natural resources for future generations, by reducing pollution, promoting
-                sustainability,
-                and conserving energy and resources.
+                Illustra lets you upload and showcase your best images, organize them into stunning galleries, 
+        and explore inspiring collections across countless categories shared by a creative community.
                 </p>
             </div>
 
@@ -24,32 +22,16 @@
                 <a href="#" title=""
                 class="sm:w-[182px] px-5 py-3 w-full  text-base font-medium text-center text-white bg-primary-700 rounded-lg shrink-0 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                 role="button">
-                Donate now
+                    Create Now
                 </a>
 
                 <a href="#" title=""
-                class="sm:w-[182px] inline-flex w-full justify-center items-center px-5 py-3 text-base font-medium text-center text-gray-900 bg-white border border-gray-200 rounded-lg shrink-0 focus:outline-none hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-                role="button">
-                <svg aria-hidden="true" class="w-5 h-5 mr-2 -ml-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                    fill="currentColor">
-                    <path
-                    d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z" />
-                </svg>
-                Learn more
+                    class="sm:w-[182px] inline-flex w-full justify-center items-center px-5 py-3 text-base font-medium text-center text-gray-800 bg-white border border-gray-200 rounded-lg shrink-0 focus:outline-none hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                    role="button">
+                    <i class="fa-solid fa-compass w-5 h-5 mr-2 text-xl -ml-1"></i>
+                    Discover More
                 </a>
-            </div>
 
-            <div class="mt-4 sm:border-t sm:border-gray-100 sm:mt-8 sm:pt-8 dark:border-gray-700">
-                <p class="hidden text-base font-medium text-gray-500 sm:block">
-                Partners and backers:
-                </p>
-
-                <div class="flex items-center mt-3 max-w-md">
-                <img class="w-auto h-8 md:h-12 mr-4" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/customers/greenpeace.svg" alt="">
-                <img class="w-auto h-8 md:h-12 mr-8" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/customers/united-nations.svg" alt="">
-                <img class="w-auto h-8 md:h-12 mr-8 dark:invert" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/customers/wwf.svg" alt="">
-                <img class="w-auto h-8 md:h-12" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/customers/oxfam.svg" alt="">
-                </div>
             </div>
             </div>
             
