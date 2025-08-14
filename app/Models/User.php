@@ -56,7 +56,12 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
         }        
 
         $initials = $this->generateInitials($this->name);
-        return Avatar::create($initials)->toBase64();
+        return Avatar::create($initials)
+            ->setBackground('#4d7c0f')   // lime-300
+            ->setForeground('#ffffff')   // black text
+            ->toBase64()
+        ;
+
     }
 
     protected function generateInitials($name)

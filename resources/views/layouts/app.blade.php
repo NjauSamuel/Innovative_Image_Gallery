@@ -123,8 +123,8 @@
                 <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800 dark:border-gray-600">
                     <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
                         <a href="/" class="flex items-center">
-                            <img src="{{ asset('logo/logo-light.png') }}" class="mr-3 h-6 sm:h-9 rounded dark:hidden" alt="Illustra Logo" />
-                            <img src="{{ asset('logo/logo-dark.png') }}" class="mr-3 h-6 sm:h-9 rounded hidden dark:inline" alt="Illustra Logo" />
+                            <img src="{{ asset('logo/logo-light.png') }}" class="mr-3 h-9 rounded dark:hidden" alt="Illustra Logo" />
+                            <img src="{{ asset('logo/logo-dark.png') }}" class="mr-3 h-9 rounded hidden dark:inline" alt="Illustra Logo" />
                             <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Illustra</span>
                         </a>
                         <div class="flex items-center lg:order-2">
@@ -144,13 +144,11 @@
                                     <button id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover"
                                         class="flex items-center gap-2 text-sm font-medium text-gray-900 dark:text-white focus:outline-none"
                                         type="button">
-                                        
-                                        {{ \Illuminate\Support\Str::limit(Auth::user()->name, 14) }}
-                                        
+                                                                                
                                         <!-- Profile image -->
-                                        <img src="{{ Auth::user()->getFirstMediaUrl('profile') ?: 'https://ui-avatars.com/api/?name=' . urlencode(Auth::user()->name) . '&background=random&color=fff' }}"
+                                        <img src="{{ Auth::user()->profile_image_url }}"
                                             alt="Profile"
-                                            class="w-8 h-8 rounded-full object-cover">
+                                            class="w-9 h-9 rounded-full object-cover">
 
                                         <!-- Arrow only on large screens -->
                                         <i class="fa fa-chevron-down hidden lg:inline-block text-xs ml-1"></i>
