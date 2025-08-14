@@ -99,7 +99,14 @@
             }
         }
 
+        /* Dark mode styling for scrollbar track */
+        .os-theme-dark > .os-scrollbar-horizontal {
+            background-color: #111;
+        }
+
     </style>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/overlayscrollbars/styles/overlayscrollbars.min.css">
    
 </head>
 <body>
@@ -495,6 +502,21 @@
         });
     </script>
 
+
+
+    <!-- OverlayScrollbars JS (UMD build for browser) -->
+    <script src="https://cdn.jsdelivr.net/npm/overlayscrollbars/browser/overlayscrollbars.browser.min.js"></script>
+
+    <!-- Init -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            OverlayScrollbars(document.querySelectorAll(".scroll-pills"), {
+                scrollbars: {
+                    autoHide: "leave"
+                }
+            });
+        });
+    </script>
 
 </body>
 </html>
