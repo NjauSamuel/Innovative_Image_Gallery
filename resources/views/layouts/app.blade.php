@@ -105,8 +105,6 @@
         }
 
     </style>
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/overlayscrollbars/styles/overlayscrollbars.min.css">
    
 </head>
 <body>
@@ -499,22 +497,6 @@
             setTimeout(() => {
                 document.querySelector('.swiper-button-next')?.click();
             }, 3000);
-        });
-    </script>
-
-
-
-    <!-- OverlayScrollbars JS (UMD build for browser) -->
-    <script src="https://cdn.jsdelivr.net/npm/overlayscrollbars/browser/overlayscrollbars.browser.min.js"></script>
-
-    <!-- Init -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            OverlayScrollbars(document.querySelectorAll(".scroll-pills"), {
-                scrollbars: {
-                    autoHide: "leave"
-                }
-            });
         });
     </script>
 

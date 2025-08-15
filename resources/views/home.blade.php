@@ -70,7 +70,7 @@
     </section>
 
     <div class="scroll-pills sticky top-0 z-50 bg-white dark:bg-gray-900 border-b border-gray-800">
-        <div class=" max-w-screen-xl mx-auto px-4 py-3 flex space-x-3 overflow-x-auto scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-gray-900">
+        <div class=" max-w-screen-xl mx-auto px-4 py-3 flex space-x-3 overflow-x-auto">
             @foreach($categories as $category)
                 <a href="#{{ Str::slug($category->name) }}"
                 class="flex items-center space-x-2 whitespace-nowrap px-4 py-2 rounded-full border border-primary-700 bg-primary-700 text-white hover:bg-primary-800 transition">

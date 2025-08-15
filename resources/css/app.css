@@ -34,3 +34,23 @@
     @apply bg-primary-400;
     background-color: theme('colors.primary.400') !important;
 }
+
+/* Scrollbar styles for dark mode */
+.dark ::-webkit-scrollbar {
+    width: 12px;
+  }
+  
+  .dark ::-webkit-scrollbar-track {
+    background: #3f6212; /* A dark gray background for the track */
+  }
+  
+  .dark ::-webkit-scrollbar-thumb {
+    background-color: #4b5563; /* A medium gray for the thumb */
+    border-radius: 6px;
+    border: 3px solid #1f2937; /* Creates a border that matches the track color */
+  }
+  
+  .dark {
+    scrollbar-color: #ffffff theme('colors.primary.800'); /* Firefox scrollbar styling */
+    scrollbar-width: thin;
+  }
