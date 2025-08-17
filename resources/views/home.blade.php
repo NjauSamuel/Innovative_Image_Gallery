@@ -70,19 +70,34 @@
     </section>
 
     <div class="scroll-pills sticky top-0 z-50 bg-white dark:bg-gray-900 border-b border-gray-800">
-        <div class=" max-w-screen-xl mx-auto px-4 py-3 flex space-x-3 overflow-x-auto">
+        <div class="max-w-screen-xl mx-auto px-4 py-3 flex space-x-3 overflow-x-auto">
             @foreach($categories as $category)
-                <a href="#{{ Str::slug($category->name) }}"
-                class="flex items-center space-x-2 whitespace-nowrap px-4 py-2 rounded-full border border-primary-700 bg-primary-700 text-white hover:bg-primary-800 transition">
+                @php $slug = Str::slug($category->name); @endphp
+                <a href="{{ url('/?category=' . $slug) }}#filter-nav"
+                class="flex items-center space-x-2 whitespace-nowrap px-4 py-2 rounded-full border 
+                        {{ $activeSlug === $slug 
+                                ? 'border-primary-700 bg-primary-700 text-white' 
+                                : 'border-primary-700 bg-primary-700 text-white hover:bg-primary-800' }} 
+                        transition">
                     <i class="{{ $category->icon->class }} text-sm"></i>
-                    <span class="text-sm font-medium">{{ $category->name }}</span>
+                    <span class="text-sm font-medium">
+                        {{ $category->name }} ({{ $category->galleries_count }})
+                    </span>
                 </a>
             @endforeach
         </div>
     </div>
 
+    @if(request('category'))
+        <script>
+            window.addEventListener('load', function() {
+                const el = document.getElementById('filter-nav');
+                if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+            });
+        </script>
+    @endif
     
-    <div class="pt-12">
+    <div id="filter-nav" class="pt-12">
         <div class="w-7/8 sm:w-1/2 mx-auto border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600 mb-20">
           <div class="px-3 py-2 border-b border-gray-200 dark:border-gray-600">
               <div class="flex flex-wrap items-center">

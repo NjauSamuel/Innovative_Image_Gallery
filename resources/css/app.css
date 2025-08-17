@@ -27,12 +27,12 @@
 .swiper-button-next::after,
 .swiper-button-prev::after,
 .swiper-pagination::after {
-    @apply text-primary-400;
+    @apply text-primary-500;
 }
 
 .swiper-pagination-bullet-active {
-    @apply bg-primary-400;
-    background-color: theme('colors.primary.400') !important;
+    @apply bg-primary-500;
+    background-color: theme('colors.primary.500') !important;
 }
 
 /* Scrollbar styles for dark mode */
@@ -54,3 +54,7 @@
     scrollbar-color: #ffffff theme('colors.primary.800'); /* Firefox scrollbar styling */
     scrollbar-width: thin;
   }
+
+  #filter-nav {
+    scroll-margin-top: 100px; /* adjust based on your sticky header height */
+  }  
