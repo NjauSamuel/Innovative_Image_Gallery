@@ -10,12 +10,14 @@
           <form class="w-full max-w-md space-y-4 md:space-y-6 xl:max-w-xl" action="{{ route('login') }}" method="POST">
                 @csrf
 
-              <h1 class="text-xl font-bold text-gray-900 dark:text-white">Welcome back</h1>
+                <div class="flex items-center justify-between">
+                    <h1 class="text-xl font-bold text-gray-900 dark:text-white">Welcome back</h1>
 
-                <button id="theme-toggle" type="button" class="absolute top-4 sm:top-10 right-3 text-gray-500 dark:text-gray-400 hover:bg-gray-100 bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
-                    <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
-                    <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-                </button>
+                    <button id="theme-toggle" type="button" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
+                        <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                        <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                    </button>
+                </div>
 
               <div class="items-center space-x-0 space-y-3 sm:flex sm:space-x-4 sm:space-y-0">
                   <a href="#" onclick="showAlert()" class="w-full inline-flex items-center justify-center py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-gray-900 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
@@ -70,8 +72,8 @@
                     <span class="self-center text-xl font-semibold whitespace-nowrap text-white dark:text-black">Illustra</span>
                 </a>
 
-              <h1 class="mb-4 text-3xl font-extrabold leading-none tracking-tight text-white xl:text-5xl">Explore trending and curated image galleries.</h1>
-              <p class="mb-4 font-light text-primary-200 lg:mb-8">Discover and share visual inspiration on Illustra — a platform for storing, exploring, and trending image galleries. Whether public or private, your collections become part of a growing archive of creative expression.</p>
+              <h1 class="mb-4 text-3xl font-extrabold leading-none tracking-tight text-white dark:text-primary-200 xl:text-5xl">Explore trending and curated image galleries.</h1>
+              <p class="mb-4 font-light text-primary-200 lg:mb-8 dark:text-black">Discover and share visual inspiration on Illustra — a platform for storing, exploring, and trending image galleries. Whether public or private, your collections become part of a growing archive of creative expression.</p>
               <div class="flex items-center divide-x divide-primary-500">
                   <div class="flex pr-3 -space-x-4 sm:pr-5">
                       <img class="w-10 h-10 border-2 border-white rounded-full" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png" alt="bonnie avatar">
@@ -80,7 +82,7 @@
                       <img class="w-10 h-10 border-2 border-white rounded-full" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/thomas-lean.png" alt="thomas avatar">
                   </div>
                   
-                    <a href="#" class="pl-3 text-white sm:pl-5 dark:text-white">
+                    <a href="#" class="pl-3 text-white sm:pl-5">
                         <span class="text-sm text-primary-200">Galleries shared. Stories told.</span>
                     </a> 
               </div>

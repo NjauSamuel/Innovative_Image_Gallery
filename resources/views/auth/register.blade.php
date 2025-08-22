@@ -4,19 +4,21 @@
 
 @section('content')
     <section class="bg-white dark:bg-gray-900">
-        <div class="grid lg:h-screen lg:grid-cols-2">
-            <div class="flex justify-center items-center py-6 px-4 lg:py-0 sm:px-0 relative">
+        <div class="grid lg:grid-cols-2">
+            <div class="flex justify-center py-3 sm:py-6 pb-6 px-4 lg:py-0 sm:px-0 relative lg:h-screen lg:overflow-y-auto">
                 
                 
-                <form class="space-y-4 max-w-md md:space-y-6 xl:max-w-xl pt-4 pb-4" action="{{ route('register') }}" method="POST">
+                <form class="my-6 space-y-4 max-w-md md:space-y-6 xl:max-w-xl pt-4 pb-4" action="{{ route('register') }}" method="POST">
                     @csrf
 
-                    <h2 class="text-xl font-bold text-gray-900 dark:text-white">Your Best Work Starts Here</h2>
-                    
-                    <button id="theme-toggle" type="button" class="absolute top-2 right-3 text-gray-500 dark:text-gray-400 hover:bg-gray-100 bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
-                        <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
-                        <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-                    </button>
+                    <div class="flex items-center justify-between">
+                        <h2 class="text-xl font-bold text-gray-900 dark:text-white">Your Best Work Starts Here</h2>
+                        
+                        <button id="theme-toggle" type="button" class=" text-gray-500 dark:text-gray-400 hover:bg-gray-100 bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
+                            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                        </button>
+                    </div>
 
                     <div class="items-center space-y-3 space-x-0 sm:flex sm:space-x-4 sm:space-y-0">
                         <a href="#" onclick="showAlert()" class="w-full inline-flex items-center justify-center py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-gray-900 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
@@ -107,10 +109,15 @@
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-700">Create an account</button>
-                    <p class="text-sm font-light text-gray-500 dark:text-gray-300">
-                        Already have an account? <a href="{{ route('login') }}" class="font-medium text-primary-600 hover:underline dark:text-primary-500">Login here</a>
-                    </p>
+                    <div>
+                        <button type="submit" class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-700">Create an account</button>
+                    </div>
+                    <div class="sm:pb-3">
+                        <p class="text-sm font-light text-gray-500 dark:text-gray-300">
+                            Already have an account? <a href="{{ route('login') }}" class="font-medium text-primary-600 hover:underline dark:text-primary-500">Login here</a>
+                        </p>
+                    </div>
+                    
                 </form>
             </div>  
 
@@ -123,8 +130,8 @@
                         <span class="self-center text-xl font-semibold whitespace-nowrap text-white dark:text-black">Illustra</span>
                     </a>
 
-                    <h1 class="mb-4 text-3xl font-extrabold tracking-tight leading-none text-white xl:text-5xl">Explore trending and curated image galleries.</h1>
-                    <p class="mb-4 font-light text-primary-200 lg:mb-8">Discover and share visual inspiration on Illustra — a platform for storing, exploring, and trending image galleries. Whether public or private, your collections become part of a growing archive of creative expression.</p>
+                    <h1 class="mb-4 text-3xl font-extrabold tracking-tight leading-none text-white dark:text-primary-200 xl:text-5xl">Explore trending and curated image galleries.</h1>
+                    <p class="mb-4 font-light text-primary-200 lg:mb-8 dark:text-black">Discover and share visual inspiration on Illustra — a platform for storing, exploring, and trending image galleries. Whether public or private, your collections become part of a growing archive of creative expression.</p>
                     <div class="flex items-center divide-x divide-primary-500">
                         <div class="flex pr-3 -space-x-4 sm:pr-5">
                             <img class="w-10 h-10 border-2 border-white rounded-full" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png" alt="bonnie avatar">
