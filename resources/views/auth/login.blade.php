@@ -83,7 +83,7 @@
                   </div>
                   
                     <a href="#" class="pl-3 text-white sm:pl-5">
-                        <span class="text-sm text-primary-200">Galleries shared. Stories told.</span>
+                        <span class="text-sm text-white dark:text-primary-200">Galleries shared. Stories told.</span>
                     </a> 
               </div>
           </div>

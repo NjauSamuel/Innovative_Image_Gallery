@@ -140,7 +140,7 @@
                             <img class="w-10 h-10 border-2 border-white rounded-full" src="{{ asset('assets/sample_1.png') }}" alt="Avatar 1">
                         </div>
                         <a href="/" class="pl-3 text-white sm:pl-5 dark:text-white">
-                            <span class="text-sm text-primary-200">Galleries shared. Stories told.</span>
+                            <span class="text-sm text-white dark:text-primary-200">Galleries shared. Stories told.</span>
                         </a> 
                     </div>
                 </div>
