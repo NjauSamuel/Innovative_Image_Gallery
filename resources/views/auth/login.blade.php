@@ -76,10 +76,10 @@
               <p class="mb-4 font-light text-primary-200 lg:mb-8 dark:text-black">Discover and share visual inspiration on Illustra — a platform for storing, exploring, and trending image galleries. Whether public or private, your collections become part of a growing archive of creative expression.</p>
               <div class="flex items-center divide-x divide-primary-500">
                   <div class="flex pr-3 -space-x-4 sm:pr-5">
-                      <img class="w-10 h-10 border-2 border-white rounded-full" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png" alt="bonnie avatar">
-                      <img class="w-10 h-10 border-2 border-white rounded-full" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png" alt="jese avatar">
-                      <img class="w-10 h-10 border-2 border-white rounded-full" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/roberta-casas.png" alt="roberta avatar">
-                      <img class="w-10 h-10 border-2 border-white rounded-full" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/thomas-lean.png" alt="thomas avatar">
+                      <img class="w-10 h-10 border-2 border-white rounded-full" src="{{ asset('assets/sample_4.png') }}" alt="Avatar 4">
+                      <img class="w-10 h-10 border-2 border-white rounded-full" src="{{ asset('assets/sample_3.png') }}" alt="Avatar 3">
+                      <img class="w-10 h-10 border-2 border-white rounded-full" src="{{ asset('assets/sample_2.png') }}" alt="Avatar 2">
+                      <img class="w-10 h-10 border-2 border-white rounded-full" src="{{ asset('assets/sample_1.png') }}" alt="Avatar 1">
                   </div>
                   
                     <a href="#" class="pl-3 text-white sm:pl-5">
