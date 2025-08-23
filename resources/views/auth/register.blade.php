@@ -53,7 +53,7 @@
                                 focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5
                                 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white
                                 @error('name') border-red-500 @enderror"
-                            placeholder="e.g. Bonnie Green"
+                            placeholder="e.g. John Doe"
                             required
                         >
                         @error('name')
@@ -112,7 +112,7 @@
                     <div>
                         <button type="submit" class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-700">Create an account</button>
                     </div>
-                    <div class="sm:pb-3">
+                    <div class="sm:pb-6">
                         <p class="text-sm font-light text-gray-500 dark:text-gray-300">
                             Already have an account? <a href="{{ route('login') }}" class="font-medium text-primary-600 hover:underline dark:text-primary-500">Login here</a>
                         </p>
