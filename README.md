@@ -1,13 +1,13 @@
 # Minimalistic Image Gallery
 
-A simple, minimalistic image gallery application built with Laravel 12, showcasing the integration of Filament for an intuitive administration panel, Spatie Media Library for robust media management, and Flowbite for a modern and responsive user interface.
+A simple, minimalistic image gallery application built with Laravel 12, showcasing the integration of Filament for an intuitive administration panel, and Spatie Media Library for robust media management.
 
 ## Features
 
 * **Image Upload & Management:** Easily upload, categorize, and manage your images through a user-friendly administration interface.
 * **Intuitive Admin Panel:** Powered by Filament PHP, providing a beautiful and efficient dashboard for all your gallery management needs.
 * **Efficient Media Handling:** Leverages Spatie Media Library for reliable and optimized storage and retrieval of image files.
-* **Modern UI with Flowbite:** A clean, responsive, and visually appealing front-end built with Flowbite, ensuring a great user experience on any device.
+* **Modern UI with Tailwind CSS:** A clean, responsive, and visually appealing front-end built with Tailwind CSS, ensuring a great user experience on any device.
 * **Simple & Minimalistic Design:** Focuses on presenting your images beautifully without unnecessary clutter.
 
 ## Technologies Used
@@ -17,7 +17,6 @@ This project highlights the seamless integration and power of the following tech
 * **Laravel 12:** The robust and elegant PHP framework providing the foundation for the application.
 * **Filament:** A TALL stack admin panel for Laravel, offering a rapid development experience for the gallery's backend. It simplifies the creation of forms, tables, and pages for managing images and other data.
 * **Spatie Media Library:** An essential package for handling file uploads and associated media. It provides a flexible way to attach files to models, generate thumbnails, and manage conversions, making image management efficient and scalable.
-* **Flowbite:** A popular open-source collection of UI components built on top of Tailwind CSS. It empowers the frontend with pre-designed, interactive elements, ensuring a consistent and modern look and feel for the gallery.
 
 ## Installation
 
