@@ -28,7 +28,7 @@ class IconAndCategorySeeder extends Seeder
             ['Cars & Motorbikes', 'fa-solid fa-car'],
             ['Books & Literature', 'fa-solid fa-book'],
             ['Education', 'fa-solid fa-graduation-cap'],
-            ['Health & Fitness', 'fa-solid fa-heart-pulse'],
+            ['Fitness', 'fa-solid fa-heart-pulse'],
             ['Home & Living', 'fa-solid fa-couch'],
             ['Events & Celebrations', 'fa-solid fa-calendar-days'],
             ['Quotes & Inspiration', 'fa-solid fa-quote-left'],
@@ -54,6 +54,22 @@ class IconAndCategorySeeder extends Seeder
             ['Wildlife', 'fa-solid fa-otter'],
             ['Festivals', 'fa-solid fa-masks-theater'],
             ['Travel Photography', 'fa-solid fa-earth-americas'],
+            ['Man', 'fa-solid fa-person'],
+            ['Woman', 'fa-solid fa-person-dress'],
+            ['Animation', 'fa-solid fa-film'],
+            ['Lofi', 'fa-solid fa-headphones'],
+            ['Motor Bikes', 'fa-solid fa-motorcycle'],
+            ['Backgrounds', 'fa-solid fa-image'],
+            ['Feelings', 'fa-solid fa-face-smile'],
+            ['Health', 'fa-solid fa-heart-pulse'],
+            ['People', 'fa-solid fa-users'],
+            ['Religion', 'fa-solid fa-place-of-worship'],
+            ['Places', 'fa-solid fa-map-location-dot'],
+            ['Industry', 'fa-solid fa-industry'],
+            ['Transportation', 'fa-solid fa-bus'],
+            ['Buildings', 'fa-solid fa-building'],
+            ['Business', 'fa-solid fa-briefcase'],
+            ['Other', 'fa-solid fa-folder-open']
         ];
 
         foreach ($items as [$category, $class]) {
