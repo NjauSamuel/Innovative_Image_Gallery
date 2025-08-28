@@ -12,13 +12,18 @@ class Image extends Model implements HasMedia
 {
     use InteractsWithMedia;
     protected $fillable = [
-        'gallery_id', 'caption'
+        'gallery_id','gallery_category_id', 'caption'
     ];
     
 
     public function gallery(): BelongsTo
     {
         return $this->belongsTo(Gallery::class);
+    }
+
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(GalleryCategory::class, 'gallery_category_id');
     }
 
     public function reactions(): HasMany

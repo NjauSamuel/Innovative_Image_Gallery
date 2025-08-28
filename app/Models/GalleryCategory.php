@@ -10,9 +10,9 @@ class GalleryCategory extends Model
 {
     protected $fillable = ['name', 'icon_id'];
 
-    public function galleries(): HasMany
+    public function images(): HasMany
     {
-        return $this->hasMany(Gallery::class, 'category_id');
+        return $this->hasMany(Image::class, 'gallery_category_id');
     }
 
     public function icon(): BelongsTo

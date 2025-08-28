@@ -9,8 +9,8 @@ Route::get('/', function () {
     $activeSlug = request('category');
 
     $categories = GalleryCategory::with('icon')
-        ->withCount('galleries')
-        ->orderByDesc('galleries_count')
+        ->withCount('images')
+        ->orderByDesc('images_count')
         ->get();
 
     if ($activeSlug) {

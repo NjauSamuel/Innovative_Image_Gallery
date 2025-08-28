@@ -81,7 +81,7 @@
                         transition">
                     <i class="{{ $category->icon->class }} text-sm"></i>
                     <span class="text-sm font-medium">
-                        {{ $category->name }} ({{ $category->galleries_count }})
+                        {{ $category->name }} ({{ $category->images_count }})
                     </span>
                 </a>
             @endforeach
