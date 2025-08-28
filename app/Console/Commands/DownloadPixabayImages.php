@@ -3,25 +3,42 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use App\Models\GalleryCategory;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
+use App\Models\User;
+use App\Models\Gallery;
+use App\Models\GalleryCategory;
+use App\Models\Image;
+use Illuminate\Support\Str;
 
 class DownloadPixabayImages extends Command
 {
-    protected $signature = 'pixabay:download-test';
-    protected $description = 'Download test images (N per category) from Pixabay and store in local folders';
+    protected $signature = 'pixabay:download-media';
+    protected $description = 'Download images from Pixabay and import into the Sudo_Master gallery.';
 
     public function handle()
     {
         $apiKey = config('services.pixabay.key');
         $baseUrl = 'https://pixabay.com/api/';
-        $imagesPerPage = 3; // Accepted Range 3 - 200
+        $imagesPerPage = 200; // Accepted Range 3 - 200
 
         if (!$apiKey) {
             $this->error('❌ No Pixabay API key found. Please set PIXABAY_KEY in your .env file.');
             return 1;
         }
+
+        // Find the sudo user
+        $user = User::where('email', 'njaus602@gmail.com')->first();
+        if (!$user) {
+            $this->error("❌ User with email njaus602@gmail.com not found.");
+            return 1;
+        }
+
+        // Ensure the gallery exists
+        $gallery = Gallery::firstOrCreate(
+            ['user_id' => $user->id, 'title' => 'Sudo_Master'],
+            ['description' => 'Master gallery seeded from Pixabay', 'is_public' => true]
+        );
 
         // Fallback mappings (Pixabay-friendly search terms)
         $categoryMappings = [
@@ -50,18 +67,21 @@ class DownloadPixabayImages extends Command
             'Black & White' => 'Black and White',
         ];
 
-        $categories = GalleryCategory::all();        
+        // $categories = GalleryCategory::all();
+
+        // Use this (resume from ID 5 onwards)
+        $categories = GalleryCategory::where('id', '>=', 10)->get();
+
         $notFound = [];
 
         foreach ($categories as $category) {
             $queryName = $categoryMappings[$category->name] ?? $category->name;
-            $query = urlencode($queryName);
 
             $this->info("📸 Fetching images for: {$category->name} (searching: {$queryName})");
 
             $response = Http::get($baseUrl, [
                 'key' => $apiKey,
-                'q' => $query,
+                'q' => $queryName,
                 'image_type' => 'photo',
                 'orientation' => 'vertical',
                 'per_page' => $imagesPerPage,
@@ -70,58 +90,72 @@ class DownloadPixabayImages extends Command
 
             if ($response->failed()) {
                 $this->error("❌ Request failed for {$category->name}");
-
-                // Log error with more context
-                Log::error("Request failed", [
+                Log::error("Pixabay request failed", [
                     'category_id' => $category->id,
                     'category_name' => $category->name,
                     'status' => $response->status(),
                     'body' => $response->body(),
                 ]);
-
                 continue;
             }
-
 
             $data = $response->json();
 
             if (empty($data['hits'])) {
-                $this->warn("⚠️ No results found for {$category->name} (query: {$queryName})");
+                $this->warn("⚠️ No results for {$category->name} ({$queryName})");
                 $notFound[] = "{$category->name} => {$queryName}";
                 continue;
             }
 
-            // Safe folder name
-            $safeName = preg_replace('/[^\w\-]/', '_', $category->name);
-            $folder = storage_path("app/gallery/{$safeName}");
-            if (!is_dir($folder)) {
-                mkdir($folder, 0777, true);
-            }
-
             foreach ($data['hits'] as $hit) {
                 $imageUrl = $hit['largeImageURL'] ?? $hit['webformatURL'];
-                $ext = pathinfo(parse_url($imageUrl, PHP_URL_PATH), PATHINFO_EXTENSION) ?: 'jpg';
-                $filePath = "{$folder}/{$safeName}_{$hit['id']}.{$ext}";
+                $caption = $hit['tags'] ?? "Pixabay - {$category->name}";
+
+                // Prevent duplicates by checking if an image with same pixabay ID exists
+                $existing = Image::where('gallery_id', $gallery->id)
+                    ->where('gallery_category_id', $category->id)
+                    ->where('caption', $caption)
+                    ->first();
+
+                if ($existing) {
+                    $this->warn("⏩ Skipping duplicate: {$caption}");
+                    continue;
+                }
 
                 try {
-                    // Retry logic (3 attempts, 1 sec apart)
-                    $imgData = Http::retry(3, 1000)->get($imageUrl)->body();
-                    file_put_contents($filePath, $imgData);
-                    $this->info("✅ Saved: {$filePath}");
+                    // Truncate caption to 255 characters (fits string column)
+                    $safeCaption = Str::limit($caption, 255, '');
+                
+                    // Create the image model
+                    $image = Image::create([
+                        'gallery_id' => $gallery->id,
+                        'gallery_category_id' => $category->id,
+                        'caption' => $safeCaption,
+                    ]);
+                
+                    // Attach media via Spatie
+                    $image->addMediaFromUrl($imageUrl)
+                        ->toMediaCollection('images');
+                
+                    $this->info("✅ Imported: {$safeCaption}");
                 } catch (\Exception $e) {
-                    $this->error("❌ Failed to save image: " . $e->getMessage());
+                    $this->error("❌ Failed saving image: {$e->getMessage()}");
+                    Log::error("Pixabay import failed", [
+                        'error' => $e->getMessage(),
+                        'imageUrl' => $imageUrl,
+                        'category' => $category->name,
+                    ]);
                 }
             }
         }
 
-        // Log categories with no results
         if (!empty($notFound)) {
             $logPath = storage_path('logs/pixabay_not_found.log');
             file_put_contents($logPath, implode(PHP_EOL, $notFound) . PHP_EOL, FILE_APPEND);
             $this->warn("⚠️ Some categories returned no results. Logged to: {$logPath}");
         }
 
-        $this->info("🎉 Download complete!");
+        $this->info("🎉 Import complete!");
         return 0;
     }
 }
