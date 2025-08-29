@@ -114,66 +114,67 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <script>
-    $(document).ready(function () {
-        let loading = false;
+$(document).ready(function () {
+    let loading = false;
+    let currentCategory = "{{ $activeSlug ?? '' }}"; // maintain current filter globally
 
-        function loadMore(url) {
-            if (!url || loading) return;
-            loading = true;
-            $('#load-more-btn').text('Loading...');
+    function loadImages(page = 1, category = currentCategory, append = false) {
+        if (loading) return;
+        loading = true;
+        $('#load-more-btn').text('Loading...');
 
-            // extract category from nextPageUrl if exists
-            const urlObj = new URL(url, window.location.origin);
-            const category = urlObj.searchParams.get('category') || '';
-
-            $.get('/images', { page: urlObj.searchParams.get('page') || 1, category: category }, function (data) {
+        $.get('/images', { page, category }, function(data){
+            if(append){
                 $('#image-container').append(data.html);
-
-                if (data.nextPageUrl) {
-                    $('#load-more-btn').data('next-page', data.nextPageUrl).text('Load More');
-                } else {
-                    $('#load-more-container').remove();
-                }
-
-                loading = false;
-            });
-        }
-
-        // click Load More
-        $(document).on('click', '#load-more-btn', function () {
-            loadMore($(this).data('next-page'));
-        });
-
-        // infinite scroll
-        $(window).scroll(function () {
-            if ($(window).scrollTop() + $(window).height() >= $(document).height() - 100) {
-                loadMore($('#load-more-btn').data('next-page'));
-            }
-        });
-
-        // category filter
-        $('.scroll-pills a').click(function(e){
-            e.preventDefault();
-            const urlObj = new URL($(this).attr('href'), window.location.origin);
-            const category = urlObj.searchParams.get('category') || '';
-
-            $.get('/images', { page: 1, category: category }, function(data){
+            } else {
                 $('#image-container').html(data.html);
+            }
 
-                if(data.nextPageUrl){
-                    if($('#load-more-btn').length){
-                        $('#load-more-btn').data('next-page', data.nextPageUrl).text('Load More');
-                    } else {
-                        $('#load-more-container').html('<button id="load-more-btn" data-next-page="'+data.nextPageUrl+'" class="px-4 py-2 bg-primary-700 text-white rounded">Load More</button>');
-                    }
-                } else {
-                    $('#load-more-container').remove();
-                }
-            });
+            // update next page globally
+            if(data.nextPageUrl){
+                $('#load-more-btn').data('next-page', data.nextPageUrl).text('Load More');
+                $('#load-more-container').show();
+            } else {
+                $('#load-more-container').hide();
+            }
+
+            loading = false;
         });
+    }
+
+    // Load More click
+    $(document).on('click', '#load-more-btn', function () {
+        const url = $(this).data('next-page');
+        if(url) {
+            const page = new URL(url).searchParams.get('page');
+            loadImages(page, currentCategory, true);
+        }
     });
 
-            
+    // Infinite scroll
+    $(window).scroll(function () {
+        if ($(window).scrollTop() + $(window).height() >= $(document).height() - 100) {
+            const nextUrl = $('#load-more-btn').data('next-page');
+            if(nextUrl){
+                const page = new URL(nextUrl).searchParams.get('page');
+                loadImages(page, currentCategory, true);
+            }
+        }
+    });
+
+    // Category filter click
+    $(document).on('click', '.scroll-pills a', function(e){
+        e.preventDefault();
+        currentCategory = $(this).data('slug'); // update global category
+
+        // update active class
+        $('.scroll-pills a').removeClass('border-primary-700').addClass('hover:bg-primary-800');
+        $(this).addClass('border-primary-700 bg-primary-700 text-white');
+
+        loadImages(1, currentCategory, false);
+    });
+});
+
 </script>
 
 
