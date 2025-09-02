@@ -71,10 +71,25 @@
 
     <div class="scroll-pills sticky top-0 z-50 bg-white dark:bg-gray-900 border-b border-gray-800">
         <div class="max-w-screen-xl mx-auto px-4 py-3 flex space-x-3 overflow-x-auto">
+
+            @php $isAllActive = empty($activeSlug); @endphp
+
+            <a href="{{ url('/') }}#filter-nav"
+            data-slug=""
+            class="flex items-center space-x-2 whitespace-nowrap px-4 py-2 rounded-full border transition
+                    {{ $isAllActive 
+                        ? 'border-primary-700 bg-primary-700 text-white' 
+                        : 'border-primary-700 bg-primary-700 text-white hover:bg-primary-800' }} 
+                        ">
+                <i class="fa-solid fa-layer-group text-sm"></i>
+                <span class="text-sm font-medium">All</span>
+            </a>
+
             @foreach($categories as $category)
                 @php $slug = Str::slug($category->name); @endphp
                 <a href="{{ url('/?category=' . $slug) }}#filter-nav"
-                class="flex items-center space-x-2 whitespace-nowrap px-4 py-2 rounded-full border 
+                data-slug="{{ $slug }}"
+                class="flex items-center space-x-2 whitespace-nowrap px-4 py-2 rounded-full border transition
                         {{ $activeSlug === $slug 
                                 ? 'border-primary-700 bg-primary-700 text-white' 
                                 : 'border-primary-700 bg-primary-700 text-white hover:bg-primary-800' }} 
@@ -165,14 +180,22 @@ $(document).ready(function () {
     // Category filter click
     $(document).on('click', '.scroll-pills a', function(e){
         e.preventDefault();
-        currentCategory = $(this).data('slug'); // update global category
+        currentCategory = $(this).data('slug') || ""; // "" means All
 
-        // update active class
-        $('.scroll-pills a').removeClass('border-primary-700').addClass('hover:bg-primary-800');
-        $(this).addClass('border-primary-700 bg-primary-700 text-white');
+        // Reset active state
+        $('.scroll-pills a')
+            .removeClass('ring-2 ring-offset-2 ring-primary-500 font-semibold shadow-md')
+            .addClass(''); // keep base green styles intact
 
+        // Add active distinction
+        $(this)
+            .addClass('ring-2 ring-offset-2 ring-primary-700 dark:ring-primary-500 font-semibold shadow-md text-slate-200');
+
+
+        // Load fresh images for that category (replace, not append)
         loadImages(1, currentCategory, false);
     });
+
 });
 
 </script>
